@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBox - Ultimate Global Book Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="book-covers-bg">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1597695864i/54493401.jpg" alt="Project Hail Mary">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg" alt="The Catcher in the Rye">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1339602131i/13288807.jpg" alt="Gone Girl">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327881361i/320.jpg" alt="One Hundred Years of Solitude">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474154022i/3.jpg" alt="Harry Potter">
+                </div>
+                <h1 class="app-logo">BookBox</h1>
+                <p class="app-tagline">Access every book that exists in the world</p>
+                <div class="global-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50M+</span>
+                        <span class="stat-label">Books</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Languages</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2000+</span>
+                        <span class="stat-label">Years of Literature</span>
+                    </div>
+                </div>
+            </div>
+            <div class="login-form">
+                <form id="login-form">
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-control" placeholder="Email address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width login-btn">Sign In to Global Library</button>
+                    <button type="button" class="btn btn--secondary btn--full-width" id="demo-login">Try Demo Access</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" class="screen">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="header-title" id="current-tab-title">Global Library</h1>
+                <div class="header-actions">
+                    <button class="header-btn" id="search-btn" title="Global Search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="header-btn" id="filter-btn" title="Advanced Filters">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Content -->
+        <main class="tab-content">
+            <!-- Home Feed Tab -->
+            <div id="home-tab" class="tab-panel active">
+                <div class="global-search-preview">
+                    <h2 class="section-title">Discover Books Worldwide</h2>
+                    <div class="search-bar enhanced-search">
+                        <input type="text" class="form-control search-input" placeholder="Search 50M+ books by title, author, ISBN, genre..." id="home-search-input">
+                        <div class="search-filters">
+                            <button class="filter-chip active" data-filter="all">All Books</button>
+                            <button class="filter-chip" data-filter="fiction">Fiction</button>
+                            <button class="filter-chip" data-filter="non-fiction">Non-Fiction</button>
+                            <button class="filter-chip" data-filter="recent">New Releases</button>
+                            <button class="filter-chip" data-filter="awards">Award Winners</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feed-section">
+                    <h2 class="section-title">Your Reading Activity</h2>
+                    <div class="activity-feed" id="activity-feed">
+                        <!-- Activities will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="feed-section">
+                    <h2 class="section-title">Trending Worldwide</h2>
+                    <div class="book-grid" id="popular-books">
+                        <!-- Popular books will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="feed-section">
+                    <h2 class="section-title">International Literature</h2>
+                    <div class="international-showcase">
+                        <div class="language-books" id="international-books">
+                            <!-- International books will be populated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discover Tab -->
+            <div id="discover-tab" class="tab-panel">
+                <div class="advanced-search-section">
+                    <h2 class="section-title">Advanced Global Search</h2>
+                    <div class="search-bar enhanced-search">
+                        <input type="text" class="form-control search-input" placeholder="Search by title, author, ISBN, publisher, or keyword..." id="search-input">
+                        <button class="search-btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="advanced-filters">
+                        <div class="filter-row">
+                            <select class="form-control filter-select" id="genre-filter">
+                                <option value="">All Genres</option>
+                            </select>
+                            <select class="form-control filter-select" id="language-filter">
+                                <option value="">All Languages</option>
+                            </select>
+                            <select class="form-control filter-select" id="year-filter">
+                                <option value="">All Years</option>
+                                <option value="2020-2024">2020-2024</option>
+                                <option value="2010-2019">2010-2019</option>
+                                <option value="2000-2009">2000-2009</option>
+                                <option value="1900-1999">20th Century</option>
+                                <option value="pre-1900">Before 1900</option>
+                            </select>
+                        </div>
+                        <div class="filter-row">
+                            <select class="form-control filter-select" id="award-filter">
+                                <option value="">All Awards</option>
+                            </select>
+                            <input type="range" class="rating-filter" id="rating-filter" min="0" max="5" value="0" step="0.1">
+                            <label class="filter-label">Min Rating: <span id="rating-value">Any</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-results-section">
+                    <div class="search-results" id="search-results">
+                        <!-- Search results will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="discover-categories">
+                    <h2 class="section-title">Browse by Genre</h2>
+                    <div class="genre-grid" id="genre-grid">
+                        <!-- Genres will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="world-literature-section">
+                    <h2 class="section-title">Literature Around the World</h2>
+                    <div class="world-map-genres">
+                        <div class="region-books" data-region="europe">
+                            <h3>European Literature</h3>
+                            <div class="region-book-grid" id="european-books"></div>
+                        </div>
+                        <div class="region-books" data-region="asia">
+                            <h3>Asian Literature</h3>
+                            <div class="region-book-grid" id="asian-books"></div>
+                        </div>
+                        <div class="region-books" data-region="americas">
+                            <h3>American Literature</h3>
+                            <div class="region-book-grid" id="american-books"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Book Tab -->
+            <div id="add-tab" class="tab-panel">
+                <div class="add-book-search">
+                    <h2 class="section-title">Find Any Book in the World</h2>
+                    <div class="search-methods">
+                        <div class="search-method active" data-method="text">
+                            <h3>Text Search</h3>
+                            <div class="search-bar enhanced-search">
+                                <input type="text" class="form-control search-input" placeholder="Title, author, ISBN, publisher..." id="book-search-input">
+                                <div class="search-suggestions" id="search-suggestions"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="search-method" data-method="isbn">
+                            <h3>ISBN Lookup</h3>
+                            <div class="isbn-search">
+                                <input type="text" class="form-control" placeholder="Enter 10 or 13 digit ISBN..." id="isbn-input">
+                                <button class="btn btn--primary" onclick="searchByISBN()">Lookup</button>
+                            </div>
+                        </div>
+
+                        <div class="search-method" data-method="barcode">
+                            <h3>Barcode Scanner</h3>
+                            <button class="btn btn--secondary barcode-btn" onclick="simulateBarcodeScan()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="16" rx="2"/>
+                                    <path d="M7 8h.01M7 12h.01M7 16h.01M11 8h.01M11 12h.01M11 16h.01M15 8h.01M15 12h.01M15 16h.01"/>
+                                </svg>
+                                Scan Barcode
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-results enhanced-results" id="add-search-results">
+                        <!-- Search results will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="quick-add-section">
+                    <h2 class="section-title">Recently Published</h2>
+                    <div class="book-grid" id="recent-books">
+                        <!-- Recent books will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="recommended-section">
+                    <h2 class="section-title">Recommended for You</h2>
+                    <div class="recommendation-grid" id="recommended-books">
+                        <!-- Recommended books based on reading history -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Tab -->
+            <div id="notifications-tab" class="tab-panel">
+                <h2 class="section-title">Global Library Updates</h2>
+                <div class="notification-filters">
+                    <button class="filter-chip active" data-filter="all">All</button>
+                    <button class="filter-chip" data-filter="recommendations">Recommendations</button>
+                    <button class="filter-chip" data-filter="releases">New Releases</button>
+                    <button class="filter-chip" data-filter="awards">Awards</button>
+                    <button class="filter-chip" data-filter="social">Social</button>
+                </div>
+                <div class="notifications-list" id="notifications-list">
+                    <!-- Notifications will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="tab-panel">
+                <div class="profile-header">
+                    <div class="profile-info">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=64" alt="Profile" class="profile-avatar">
+                        <div class="profile-details">
+                            <h2 class="profile-name">Sarah Chen</h2>
+                            <p class="profile-username">@bookworm_sarah</p>
+                            <p class="profile-bio">Literature professor & global book enthusiast. Exploring world literature one book at a time!</p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">127</span>
+                            <span class="stat-label">Books Read</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">23</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Languages</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">234</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reading-stats">
+                    <h3>Reading Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-title">This Year</span>
+                            <span class="stat-big-number">47</span>
+                            <span class="stat-subtitle">books</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-title">Average Rating</span>
+                            <span class="stat-big-number">4.2</span>
+                            <span class="stat-subtitle">stars</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-title">Reviews Written</span>
+                            <span class="stat-big-number">89</span>
+                            <span class="stat-subtitle">reviews</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-title">Pages Read</span>
+                            <span class="stat-big-number">18,456</span>
+                            <span class="stat-subtitle">pages</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-library">
+                    <div class="library-tabs">
+                        <button class="library-tab active" data-status="read">Read</button>
+                        <button class="library-tab" data-status="reading">Currently Reading</button>
+                        <button class="library-tab" data-status="want">Want to Read</button>
+                    </div>
+                    <div class="library-content" id="library-content">
+                        <!-- Library books will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-tab="home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                    <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                </svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" data-tab="discover">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10,8 16,12 10,16"></polygon>
+                </svg>
+                <span>Discover</span>
+            </button>
+            <button class="nav-item" data-tab="add">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                <span>Add Book</span>
+            </button>
+            <button class="nav-item" data-tab="notifications">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 01-3.46 0"></path>
+                </svg>
+                <span>Updates</span>
+            </button>
+            <button class="nav-item" data-tab="profile">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Enhanced Book Detail Modal -->
+    <div id="book-modal" class="modal hidden">
+        <div class="modal-content enhanced-modal">
+            <div class="modal-header">
+                <button class="modal-close" id="close-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Book details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Searching global database...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
